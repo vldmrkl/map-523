@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lab1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM:SS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gj7-vs-74n">
+                                <rect key="frame" x="95" y="115" width="224" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The number must be between 1 and 60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcN-0a-gtg">
+                                <rect key="frame" x="80.666666666666686" y="202.33333333333334" width="253" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.6858740482233503" green="0.21180755674856366" blue="0.17324052676439231" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number of minutes between 1 and 60" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ame-A3-JRr">
+                                <rect key="frame" x="82" y="353" width="250" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="cgZ-Rl-HCL"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A2-wB-VFk">
+                                <rect key="frame" x="132" y="423" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.15789559696801028" green="0.76098508883248728" blue="0.050185540764086808" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Q2Q-Ct-sWJ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obO-Nr-3k8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14y-tw-8oo">
+                                <rect key="frame" x="132" y="473" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.68587404819999997" green="0.21180755670000001" blue="0.17324052679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="QVP-Ec-7dQ"/>
+                                </constraints>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9uv-Pr-akn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14778315355329952" green="0.14778315355329952" blue="0.14778315355329952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="14y-tw-8oo" firstAttribute="top" secondItem="7A2-wB-VFk" secondAttribute="bottom" constant="20" id="199-zb-dmO"/>
+                            <constraint firstItem="IcN-0a-gtg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Deh-Yo-hzw"/>
+                            <constraint firstItem="Gj7-vs-74n" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JyD-pp-9bZ"/>
+                            <constraint firstItem="ame-A3-JRr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KuH-Mv-27h"/>
+                            <constraint firstItem="Gj7-vs-74n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="Otc-41-8VT"/>
+                            <constraint firstItem="7A2-wB-VFk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QqZ-i7-Gdb"/>
+                            <constraint firstItem="14y-tw-8oo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Trf-V7-PHo"/>
+                            <constraint firstItem="7A2-wB-VFk" firstAttribute="top" secondItem="ame-A3-JRr" secondAttribute="bottom" constant="40" id="gYX-mU-69a"/>
+                            <constraint firstItem="ame-A3-JRr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="geg-Sn-WH6"/>
+                            <constraint firstItem="IcN-0a-gtg" firstAttribute="firstBaseline" secondItem="Gj7-vs-74n" secondAttribute="baseline" constant="32" symbolType="layoutAnchor" id="rv4-Kr-hws"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="startButton" destination="7A2-wB-VFk" id="0s8-w7-6cE"/>
+                        <outlet property="stopButton" destination="14y-tw-8oo" id="zw5-rN-gww"/>
+                        <outlet property="timeInput" destination="ame-A3-JRr" id="2Cl-em-GFe"/>
+                        <outlet property="timerLabel" destination="Gj7-vs-74n" id="RtB-Kc-hEP"/>
+                        <outlet property="warningLabel" destination="IcN-0a-gtg" id="UtF-r6-592"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.23188405797103" y="132.06521739130434"/>
+        </scene>
+    </scenes>
+</document>
