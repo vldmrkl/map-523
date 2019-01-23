@@ -12,6 +12,9 @@
 		2DEB50FF21F8A3F8008626EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB50FD21F8A3F8008626EC /* Main.storyboard */; };
 		2DEB510121F8A3FA008626EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB510021F8A3FA008626EC /* Assets.xcassets */; };
 		2DEB510421F8A3FA008626EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB510221F8A3FA008626EC /* LaunchScreen.storyboard */; };
+		2DEB510C21F8A71E008626EC /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB510B21F8A71E008626EC /* MealTableViewCell.swift */; };
+		2DEB510E21F8ADBA008626EC /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB510D21F8ADBA008626EC /* MealTableViewController.swift */; };
+		2DEB511021F8AF7A008626EC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB510F21F8AF7A008626EC /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		2DEB510021F8A3FA008626EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DEB510321F8A3FA008626EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEB510521F8A3FA008626EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DEB510B21F8A71E008626EC /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		2DEB510D21F8ADBA008626EC /* MealTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		2DEB510F21F8AF7A008626EC /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = ../../../../../Desktop/06_CreateATableView/FoodTracker/FoodTracker/Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				2DEB50F921F8A3F8008626EC /* AppDelegate.swift */,
 				2DEB50FB21F8A3F8008626EC /* ViewController.swift */,
+				2DEB510D21F8ADBA008626EC /* MealTableViewController.swift */,
+				2DEB510F21F8AF7A008626EC /* Meal.swift */,
+				2DEB510B21F8A71E008626EC /* MealTableViewCell.swift */,
 				2DEB50FD21F8A3F8008626EC /* Main.storyboard */,
 				2DEB510021F8A3FA008626EC /* Assets.xcassets */,
 				2DEB510221F8A3FA008626EC /* LaunchScreen.storyboard */,
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEB511021F8AF7A008626EC /* Meal.swift in Sources */,
 				2DEB50FC21F8A3F8008626EC /* ViewController.swift in Sources */,
 				2DEB50FA21F8A3F8008626EC /* AppDelegate.swift in Sources */,
+				2DEB510E21F8ADBA008626EC /* MealTableViewController.swift in Sources */,
+				2DEB510C21F8A71E008626EC /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
