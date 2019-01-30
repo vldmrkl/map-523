@@ -51,12 +51,8 @@ class ViewController: UIViewController {
             }
         }
         
-        
-        
-        
             print(board)
         }
-        
     }
 }
 
