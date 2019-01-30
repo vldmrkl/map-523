@@ -137,6 +137,9 @@
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ID9-bX-6Ml"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8D-ek-amn">
                                 <rect key="frame" x="16" y="20" width="100" height="40"/>
@@ -148,6 +151,23 @@
                                 <state key="normal" title="Load Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0J-tF-9kc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4z-cU-HVU">
+                                <rect key="frame" x="137.5" y="20" width="100" height="40"/>
+                                <color key="backgroundColor" red="0.04748595622" green="0.61334597589999995" blue="0.93000475890000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mhd-kl-MVs"/>
+                                    <constraint firstAttribute="width" constant="100" id="eIz-zK-Mtm"/>
+                                </constraints>
+                                <state key="normal" title="Save Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7kN-HO-u8J"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,7 +193,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o39-ze-Wjc" secondAttribute="trailing" constant="16" id="YJv-fv-eda"/>
                             <constraint firstItem="LBO-Gt-hpM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aDx-PF-STJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o39-ze-Wjc" secondAttribute="trailing" constant="16" id="b6W-33-4tE"/>
+                            <constraint firstItem="Y4z-cU-HVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bhm-pd-cEX"/>
                             <constraint firstItem="k6m-pH-gBz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dt7-sF-210"/>
+                            <constraint firstItem="Y4z-cU-HVU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="guv-hc-31t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LBO-Gt-hpM" secondAttribute="bottom" constant="137" id="k1Q-WC-xew"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o39-ze-Wjc" secondAttribute="trailing" constant="16" id="kps-Hd-FDB"/>
                             <constraint firstItem="afX-HS-0jJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lHf-34-EdQ"/>
@@ -190,7 +212,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loadGameButton" destination="f8D-ek-amn" id="M5o-BD-lyr"/>
+                        <outlet property="newGameButton" destination="uYh-nQ-im6" id="SCf-5D-uB2"/>
                         <outlet property="resultLabel" destination="Fqq-Xc-t4I" id="8pD-gz-ARt"/>
+                        <outlet property="saveGameButton" destination="Y4z-cU-HVU" id="46i-jd-MLg"/>
+                        <outletCollection property="buttons" destination="xgK-8A-nDr" collectionClass="NSMutableArray" id="3oG-zk-CDL"/>
+                        <outletCollection property="buttons" destination="afX-HS-0jJ" collectionClass="NSMutableArray" id="EUD-E1-gW5"/>
+                        <outletCollection property="buttons" destination="o39-ze-Wjc" collectionClass="NSMutableArray" id="W82-XH-F5I"/>
+                        <outletCollection property="buttons" destination="7SQ-od-cem" collectionClass="NSMutableArray" id="7NO-Oj-4Ob"/>
+                        <outletCollection property="buttons" destination="k6m-pH-gBz" collectionClass="NSMutableArray" id="Qbk-Ug-0QJ"/>
+                        <outletCollection property="buttons" destination="xVn-31-2sZ" collectionClass="NSMutableArray" id="Qw1-4a-DGX"/>
+                        <outletCollection property="buttons" destination="4Fg-OU-Mrk" collectionClass="NSMutableArray" id="EFi-Lv-edi"/>
+                        <outletCollection property="buttons" destination="cZg-mD-6ib" collectionClass="NSMutableArray" id="xcb-aC-dK5"/>
+                        <outletCollection property="buttons" destination="NN8-8v-ZtV" collectionClass="NSMutableArray" id="zTq-9g-4Ab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
