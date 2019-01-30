@@ -121,10 +121,39 @@
                                     <action selector="btnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="caj-u0-DM5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqq-Xc-t4I">
+                                <rect key="frame" x="152" y="112" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYh-nQ-im6">
+                                <rect key="frame" x="259" y="20" width="100" height="40"/>
+                                <color key="backgroundColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4Uv-hT-8a5"/>
+                                    <constraint firstAttribute="width" constant="100" id="PHZ-Ic-5jB"/>
+                                </constraints>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8D-ek-amn">
+                                <rect key="frame" x="16" y="20" width="100" height="40"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gMG-Tb-PdX"/>
+                                    <constraint firstAttribute="height" constant="40" id="xOs-P9-aRT"/>
+                                </constraints>
+                                <state key="normal" title="Load Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="k6m-pH-gBz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1oY-Cf-ZGL"/>
+                            <constraint firstItem="Fqq-Xc-t4I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6sX-uf-g8C"/>
                             <constraint firstItem="LBO-Gt-hpM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7AW-c3-zmh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LBO-Gt-hpM" secondAttribute="trailing" id="ATo-YR-TC5"/>
                             <constraint firstItem="7SQ-od-cem" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Cp0-qj-BK0"/>
@@ -136,7 +165,10 @@
                             <constraint firstItem="o39-ze-Wjc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="145" id="Mlh-YG-D5w"/>
                             <constraint firstItem="cZg-mD-6ib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ogp-u3-VH3"/>
                             <constraint firstItem="afX-HS-0jJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="145" id="P8J-8T-3q6"/>
+                            <constraint firstItem="f8D-ek-amn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PjH-De-4h6"/>
+                            <constraint firstItem="LBO-Gt-hpM" firstAttribute="top" secondItem="Fqq-Xc-t4I" secondAttribute="bottom" constant="8" id="Prg-bV-Z72"/>
                             <constraint firstItem="4Fg-OU-Mrk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="SL5-Il-7I6"/>
+                            <constraint firstItem="uYh-nQ-im6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TFw-o1-C6R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xVn-31-2sZ" secondAttribute="trailing" constant="16" id="VgU-dP-YA5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o39-ze-Wjc" secondAttribute="trailing" constant="16" id="YJv-fv-eda"/>
                             <constraint firstItem="LBO-Gt-hpM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aDx-PF-STJ"/>
@@ -145,9 +177,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LBO-Gt-hpM" secondAttribute="bottom" constant="137" id="k1Q-WC-xew"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o39-ze-Wjc" secondAttribute="trailing" constant="16" id="kps-Hd-FDB"/>
                             <constraint firstItem="afX-HS-0jJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lHf-34-EdQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uYh-nQ-im6" secondAttribute="trailing" constant="16" id="nKg-H6-hdR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NN8-8v-ZtV" secondAttribute="bottom" constant="145" id="raM-Od-oWT"/>
                             <constraint firstItem="LBO-Gt-hpM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="svd-cG-aX0"/>
                             <constraint firstItem="xgK-8A-nDr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="uWM-3g-afX"/>
+                            <constraint firstItem="f8D-ek-amn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="v6S-rl-GSp"/>
                             <constraint firstItem="LBO-Gt-hpM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vfL-xQ-K6m"/>
                             <constraint firstItem="7SQ-od-cem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="wiD-jt-ldA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NN8-8v-ZtV" secondAttribute="trailing" constant="16" id="wuA-jT-ls7"/>
@@ -155,6 +189,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="Fqq-Xc-t4I" id="8pD-gz-ARt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

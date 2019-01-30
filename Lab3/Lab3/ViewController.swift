@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var gameOver = false
+	@IBOutlet weak var resultLabel: UILabel!
+	
+	var gameOver = false
     
     var turn = 1    //1 is O  2 is X
     
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		resultLabel.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -46,9 +49,18 @@ class ViewController: UIViewController {
             
             if board[win_cond[0]] != 0 && board[win_cond[0]] == board[win_cond[1]] && board[win_cond[1]] == board[win_cond[2]]
             {
-                print("Winning Case")
+				if turn == 1 {
+					resultLabel.text = "Xs won"
+				}
+				else{
+					resultLabel.text = "Os won"
+				}
                 gameOver = true
             }
+			else if !board.contains(0){
+				gameOver = true
+				resultLabel.text = "Draw"
+			}
         }
         
             print(board)
