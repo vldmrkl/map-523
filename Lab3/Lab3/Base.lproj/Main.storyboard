@@ -169,6 +169,10 @@
                                     <action selector="saveGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7kN-HO-u8J"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="U7C-bh-L5h">
+                                <rect key="frame" x="16" y="582" width="343" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -212,6 +216,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="banner" destination="U7C-bh-L5h" id="UZc-Pk-kOP"/>
                         <outlet property="loadGameButton" destination="f8D-ek-amn" id="M5o-BD-lyr"/>
                         <outlet property="newGameButton" destination="uYh-nQ-im6" id="SCf-5D-uB2"/>
                         <outlet property="resultLabel" destination="Fqq-Xc-t4I" id="8pD-gz-ARt"/>
@@ -234,5 +239,6 @@
     </scenes>
     <resources>
         <image name="board.png" width="744" height="783"/>
+        <image name="img-1.png" width="500" height="250"/>
     </resources>
 </document>

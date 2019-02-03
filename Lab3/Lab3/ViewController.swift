@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var loadGameButton: UIButton!
 
 	@IBOutlet var buttons: [UIButton]!
+	@IBOutlet weak var banner: UIImageView!
 
 	var gameOver = false
 	var turn = 1    //1 is O  2 is X
@@ -24,12 +25,25 @@ class ViewController: UIViewController {
 	var gameStateTurn = 1
     var gameStateGameOver = false
     var winning_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+	var timer = Timer()
+	var counter = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		resultLabel.text = ""
-        // Do any additional setup after loading the view, typically from a nib.
+		banner.image = UIImage(named: "img-1.png")
+		print("./banner_images/img-1.png")
+		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
     }
+
+	@objc func animate()
+	{
+		counter += 1
+		if counter == 4{
+			counter = 1
+		}
+		banner.image = UIImage(named: "img-\(counter).png")
+	}
 
 
     @IBAction func btnPressed(_ sender: AnyObject) {
