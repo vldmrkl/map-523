@@ -24,32 +24,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let marioCategory: UInt32 = 0x1 << 1
     let coinCategory: UInt32 = 0x1 << 2
+	let dummyCategory: UInt32 = 0x1 << 5
     
     
     override func didMove(to view: SKView) {
-        
-        
         physicsWorld.contactDelegate = self  //The driver of the physics engine in a scene; it exposes the ability for you to configure and query the physics system.
        
         mario = childNode(withName: "mario") as? SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
-        
-        
+
         mario?.physicsBody?.categoryBitMask = marioCategory
+		mario?.physicsBody?.collisionBitMask = marioCategory
         mario?.physicsBody?.contactTestBitMask = coinCategory
         
-        
         coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
-        
-      
-        
-       
+
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 50000))
+        mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 40000))
         
     }
     
@@ -60,10 +55,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.physicsBody?.affectedByGravity = false
         
         coin.physicsBody?.categoryBitMask = coinCategory
+		coin.physicsBody?.collisionBitMask = coinCategory
         coin.physicsBody?.contactTestBitMask = marioCategory
-        
-        //coin.physicsBody?.collisionBitMask = 0
-        
+
         addChild(coin)
         
         let maxY = size.height / 2 - coin.size.height / 2
@@ -78,12 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let mySeq = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
         coin.run(mySeq)
     }
+
     
     func didBegin(_ contact: SKPhysicsContact) {
         print("Contact!")
-        
-        scoreLabel?.text = "Score: \(score)"
-        
         /*
         if contact.bodyA.categoryBitMask == coinCategory {
             contact.bodyA.node?.removeFromParent()
@@ -94,9 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             score += 1
         }
- 
-        
-        
+		scoreLabel?.text = "Score: \(score)"
     }
     
   
