@@ -20,12 +20,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coinTimer: Timer?
 	var cloudTimer: Timer?
+	var bombTimer: Timer?
    
     var score = 0
+
+	var marioLives = 3
     
     let marioCategory: UInt32 = 0x1 << 1
     let coinCategory: UInt32 = 0x1 << 2
 	let cloudCategory: UInt32 = 0x1 << 3
+	let bombCategory: UInt32 = 0x1 << 4
     
     
     override func didMove(to view: SKView) {
@@ -40,6 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
 		cloudTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: {(timer) in self.createCloud()})
+		bombTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {(timer) in self.createBomb()})
     }
     
     
@@ -89,8 +94,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let maxY = size.height / 2.5 - cloud.size.height / 2
 		let minY = size.height / 6 + cloud.size.height / 2
 
-		print(maxY)
-		print(minY)
 		let range = maxY - minY
 		let cloudY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
 
@@ -101,8 +104,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		cloud.run(cloudSequence)
 	}
 
+	func createBomb(){
+		let bomb = SKSpriteNode(imageNamed: "bomb")
+		bomb.size = CGSize(width:150, height: 150)
+		bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+		bomb.physicsBody?.affectedByGravity = false
+
+		bomb.physicsBody?.categoryBitMask = bombCategory
+		bomb.physicsBody?.collisionBitMask = bombCategory
+		bomb.physicsBody?.contactTestBitMask = marioCategory
+
+		addChild(bomb)
+
+		let maxY = size.height / 2 - bomb.size.height / 2
+		let minY = -size.height / 3 + bomb.size.height / 2
+		let range = maxY - minY
+		let bombY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
+
+		bomb.position = CGPoint(x: size.width / 2 + bomb.size.width / 2, y: bombY)
+		let moveLeft = SKAction.moveBy(x: -size.width - bomb.size.width, y: 0, duration: 4)
+		let bombSequence = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
+		bomb.run(bombSequence)
+	}
+
     func didBegin(_ contact: SKPhysicsContact) {
-        print("Contact!")
         /*
         if contact.bodyA.categoryBitMask == coinCategory {
             contact.bodyA.node?.removeFromParent()
@@ -113,6 +138,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyB.node?.removeFromParent()
             score += 1
         }
+
+		if contact.bodyA.categoryBitMask == marioCategory && contact.bodyB.categoryBitMask == bombCategory{
+			contact.bodyB.node?.removeFromParent()
+			marioLives -= 1
+			print("Mario lives: \(marioLives)")
+			if(marioLives == 0){
+				print("Game over!")
+			}
+		}
+
+
 		scoreLabel?.text = "Score: \(score)"
     }
     
