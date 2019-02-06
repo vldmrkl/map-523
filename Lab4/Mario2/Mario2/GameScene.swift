@@ -19,12 +19,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     var coinTimer: Timer?
+	var cloudTimer: Timer?
    
     var score = 0
     
     let marioCategory: UInt32 = 0x1 << 1
     let coinCategory: UInt32 = 0x1 << 2
-	let dummyCategory: UInt32 = 0x1 << 5
+	let cloudCategory: UInt32 = 0x1 << 3
     
     
     override func didMove(to view: SKView) {
@@ -38,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mario?.physicsBody?.contactTestBitMask = coinCategory
         
         coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
-
+		cloudTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: {(timer) in self.createCloud()})
     }
     
     
@@ -61,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(coin)
         
         let maxY = size.height / 2 - coin.size.height / 2
-        let minY = -size.height / 2 + coin.size.height / 2
+        let minY = -size.height / 3 + coin.size.height / 2
         let range = maxY - minY
         
         let coinY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
@@ -73,7 +74,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.run(mySeq)
     }
 
-    
+	func createCloud() {
+		let cloud = SKSpriteNode(imageNamed: "cloud")
+		cloud.size = CGSize(width: 150, height: 100)
+		cloud.physicsBody = SKPhysicsBody(rectangleOf: cloud.size)
+		cloud.physicsBody?.affectedByGravity = false
+
+		cloud.physicsBody?.categoryBitMask = cloudCategory
+		cloud.physicsBody?.collisionBitMask = cloudCategory
+		cloud.physicsBody?.contactTestBitMask = cloudCategory
+
+		addChild(cloud)
+
+		let maxY = size.height / 2.5 - cloud.size.height / 2
+		let minY = size.height / 6 + cloud.size.height / 2
+
+		print(maxY)
+		print(minY)
+		let range = maxY - minY
+		let cloudY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
+
+		cloud.position = CGPoint(x: size.width / 2 + cloud.size.width / 2, y: cloudY)
+
+		let moveLeft = SKAction.moveBy(x: -size.width - cloud.size.width, y: 0, duration: 5)
+		let cloudSequence = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
+		cloud.run(cloudSequence)
+	}
+
     func didBegin(_ contact: SKPhysicsContact) {
         print("Contact!")
         /*
