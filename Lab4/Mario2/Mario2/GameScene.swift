@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var label : SKLabelNode?
     var scoreLabel: SKLabelNode?
+	var gameOverLabel: SKLabelNode?
     
     var mario: SKSpriteNode?  //SKSpriteNode is an onscreen graphical element that can be initialized from an image or a solid color. SpriteKit adds functionality to its ability to display images. For more information:
     //https://developer.apple.com/documentation/spritekit/skspritenode
@@ -24,19 +25,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     var score = 0
 
-	var marioLives = 3
+	var marioLivesLeft = 3
     
     let marioCategory: UInt32 = 0x1 << 1
     let coinCategory: UInt32 = 0x1 << 2
 	let cloudCategory: UInt32 = 0x1 << 3
 	let bombCategory: UInt32 = 0x1 << 4
-    
-    
+	var marioLives: [SKSpriteNode] = []
+
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self  //The driver of the physics engine in a scene; it exposes the ability for you to configure and query the physics system.
-       
+		initMarioLifes()
+
         mario = childNode(withName: "mario") as? SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+		gameOverLabel = childNode(withName: "gameOverLabel") as? SKLabelNode
+
+		gameOverLabel?.isHidden = true
 
         mario?.physicsBody?.categoryBitMask = marioCategory
 		mario?.physicsBody?.collisionBitMask = marioCategory
@@ -49,10 +54,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 40000))
-        
+		if(marioLivesLeft>0){
+        	mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 40000))
+		}
     }
+
+	func initMarioLifes(){
+		for i in 0...2{
+			let marioLife = SKSpriteNode(imageNamed: "superMario")
+			let newX = CGFloat(50 + 70*i)
+			marioLife.size = CGSize(width: 58, height: 74)
+			marioLife.position = CGPoint (x: -size.width/2+newX, y: size.height/2 - 50)
+			marioLives.append(marioLife)
+			self.addChild(marioLife)
+		}
+	}
     
     func createCoin() {
         let coin = SKSpriteNode(imageNamed: "coin")
@@ -141,10 +157,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		if contact.bodyA.categoryBitMask == marioCategory && contact.bodyB.categoryBitMask == bombCategory{
 			contact.bodyB.node?.removeFromParent()
-			marioLives -= 1
-			print("Mario lives: \(marioLives)")
-			if(marioLives == 0){
+			marioLivesLeft -= 1
+			if marioLivesLeft >= 0{
+				marioLives[marioLivesLeft].removeFromParent()
+			}
+			if(marioLivesLeft == 0){
 				print("Game over!")
+				coinTimer?.invalidate()
+				bombTimer?.invalidate()
+				cloudTimer?.invalidate()
+				gameOverLabel?.isHidden = false
+				self.backgroundColor = .darkGray
 			}
 		}
 
