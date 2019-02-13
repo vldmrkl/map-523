@@ -85,14 +85,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func createBird() {
+		let bird = SKSpriteNode(imageNamed: "bird-1")
+		bird.size = CGSize(width: 150, height: 140)
+		bird.physicsBody = SKPhysicsBody(rectangleOf: bird.size)
+		bird.physicsBody?.affectedByGravity = false
+		bird.physicsBody?.categoryBitMask = birdCategory
+		bird.physicsBody?.collisionBitMask = dummyCategory
+		bird.physicsBody?.contactTestBitMask = marioCategory
+		addChild(bird)
 
-       /*
-         To Do:
-         
-         Create a bird and add animation to the bird. The frames for the animation is given to you under "Assets" folder
-         
-        */
-      
+		let maxY = size.height / 2 - bird.size.height / 2
+		let minY = -size.height / 3 + bird.size.height / 2
+		let range = maxY - minY
+		let birdY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
+
+		bird.position = CGPoint(x: size.width / 2 + bird.size.width / 2, y: birdY)
+		let moveLeft = SKAction.moveBy(x: -size.width - bird.size.width, y: 0, duration: 4)
+		let birdSequence = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
+		bird.run(birdSequence)
+
+		var birdTextures: [SKTexture] = []
+		for birdTextureIndex in 1...7 {
+			birdTextures.append(SKTexture(imageNamed: "bird-\(birdTextureIndex).png"))
+		}
+
+		bird.run(SKAction.repeatForever(SKAction.animate(with: birdTextures, timePerFrame: 0.1)))
     }
     
     
