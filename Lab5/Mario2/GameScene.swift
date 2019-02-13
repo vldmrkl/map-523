@@ -195,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(coin)
         
         let maxY = size.height / 2 - coin.size.height / 2
-        let minY = -size.height / 2 + coin.size.height / 2
+        let minY = -size.height / 2.5 + coin.size.height / 2
         let range = maxY - minY
         let coinY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
         coin.position = CGPoint(x: size.width / 2 + coin.size.width / 2, y: coinY)
