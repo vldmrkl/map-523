@@ -157,28 +157,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOver() {
         
         scene?.isPaused = true  //Pause the scene
-        
-        //To Do:
-        
-        //1 - Stop the timers for coin and bird
-        // Code required
+
+		coinTimer?.invalidate()
+		birdTimer?.invalidate()
        
+		yourScoreLabel = SKLabelNode(text: "Your Score:")
+		yourScoreLabel?.position = CGPoint(x: 0, y: 120)
+		yourScoreLabel?.fontSize = 100.0
+		yourScoreLabel?.zPosition = 5
+		self.addChild(yourScoreLabel!)
         
-        //2 - Update the Score label on the top-left of the screen
-        yourScoreLabel = SKLabelNode(text: "Your Score:")
-        //More Code required
-       
-        
-         //3 - Update the final score on the screen
         finalScoreLabel = SKLabelNode(text: "\(score)")
-        //More Code required
+		finalScoreLabel?.position = CGPoint(x:0, y: 0)
+		finalScoreLabel?.fontSize = 120.0
+		finalScoreLabel?.fontName = "HelveticaNeue-Bold"
+
+		finalScoreLabel?.zPosition = 6
+		self.addChild(finalScoreLabel!)
+
        
         //4 - Add the play button on the screen
         //This part is completed
         let playButton = SKSpriteNode(imageNamed: "play")
         playButton.position = CGPoint(x: 0, y: -200)
         playButton.name = "play"
-        playButton.zPosition = 1
+        playButton.zPosition = 4
         addChild(playButton)
     }
     
