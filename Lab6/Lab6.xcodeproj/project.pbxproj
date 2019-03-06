@@ -14,6 +14,7 @@
 		2D357FAD222F6E25007BDCBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D357FAC222F6E25007BDCBD /* Assets.xcassets */; };
 		2D357FB0222F6E25007BDCBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D357FAE222F6E25007BDCBD /* LaunchScreen.storyboard */; };
 		2D357FB8222F7B82007BDCBD /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D357FB7222F7B82007BDCBD /* UserViewController.swift */; };
+		2D357FBA222F82CF007BDCBD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D357FB9222F82CF007BDCBD /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2D357FAF222F6E25007BDCBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D357FB1222F6E25007BDCBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D357FB7222F7B82007BDCBD /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		2D357FB9222F82CF007BDCBD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				2D357FA2222F6E24007BDCBD /* AppDelegate.swift */,
 				2D357FA4222F6E24007BDCBD /* ViewController.swift */,
 				2D357FA6222F6E24007BDCBD /* Main.storyboard */,
+				2D357FB9222F82CF007BDCBD /* SignUpViewController.swift */,
 				2D357FB7222F7B82007BDCBD /* UserViewController.swift */,
 				2D357FAC222F6E25007BDCBD /* Assets.xcassets */,
 				2D357FAE222F6E25007BDCBD /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				2D357FB8222F7B82007BDCBD /* UserViewController.swift in Sources */,
 				2D357FAB222F6E24007BDCBD /* Lab6.xcdatamodeld in Sources */,
 				2D357FA3222F6E24007BDCBD /* AppDelegate.swift in Sources */,
+				2D357FBA222F82CF007BDCBD /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
