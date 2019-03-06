@@ -36,13 +36,14 @@ class ViewController: UIViewController {
 			for data in result as! [NSManagedObject]{
 				let username = data.value(forKey: "username") as! String
 				if username == usernameInput.text {
-					print("Found user!")
-					userFound = true
-					
+					userFound = true					
 					let pwd = data.value(forKey: "password") as! String
 					if passwordInput.text == pwd{
 						wrongPwdLabel.isHidden = true
-						print("Hello \(username)")
+						if let userVC = storyboard?.instantiateViewController(withIdentifier: "User") as? UserViewController {
+							userVC.username = username
+							navigationController?.pushViewController(userVC, animated: true)
+						}
 					} else{
 						wrongPwdLabel.isHidden = false
 					}
