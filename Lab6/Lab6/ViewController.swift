@@ -40,6 +40,7 @@ class ViewController: UIViewController {
 					let pwd = data.value(forKey: "password") as! String
 					if passwordInput.text == pwd{
 						wrongInput.isHidden = true
+						signUpButton.isHidden = true
 						if let userVC = storyboard?.instantiateViewController(withIdentifier: "User") as? UserViewController {
 							userVC.username = username
 							navigationController?.pushViewController(userVC, animated: true)
