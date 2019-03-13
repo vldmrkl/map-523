@@ -53,11 +53,51 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 		spdLabel.text = "Speed: \(speed)"
 		courseLabel.text = "Course: \(course)"
 
+		let geocoder = CLGeocoder()
+		geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+			self.processResponse(withPlacemarks: placemarks, error: error)
+		}
+
 		self.mapView.setRegion(region, animated: true)
 	}
 
+	private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+		if let error = error {
+			print("Unable to Reverse Geocode Location (\(error))")
+			nearAddressLabel.text = "Unable to Find Address for Location"
 
+		} else {
+			if let placemarks = placemarks, let placemark = placemarks.first {
+				nearAddressLabel.text = placemark.compactAddress
+			} else {
+				nearAddressLabel.text = "No Matching Addresses Found"
+			}
+		}
+	}
+}
 
+extension CLPlacemark {
+	var compactAddress: String? {
+		if let name = name {
+			var result = name
+
+			if let street = thoroughfare {
+				result += ", \(street)"
+			}
+
+			if let city = locality {
+				result += ", \(city)"
+			}
+
+			if let country = country {
+				result += ", \(country)"
+			}
+
+			return result
+		}
+
+		return nil
+	}
 
 }
 
