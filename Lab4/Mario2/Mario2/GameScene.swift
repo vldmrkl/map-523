@@ -37,26 +37,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self  //The driver of the physics engine in a scene; it exposes the ability for you to configure and query the physics system.
 		initMarioLifes()
 
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanFrom))
+        self.view!.addGestureRecognizer(panGestureRecognizer)
+
         mario = childNode(withName: "mario") as? SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
 		gameOverLabel = childNode(withName: "gameOverLabel") as? SKLabelNode
-
 		gameOverLabel?.isHidden = true
 
         mario?.physicsBody?.categoryBitMask = marioCategory
 		mario?.physicsBody?.collisionBitMask = marioCategory
         mario?.physicsBody?.contactTestBitMask = coinCategory
-        
+
         coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
 		cloudTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: {(timer) in self.createCloud()})
 		bombTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {(timer) in self.createBomb()})
     }
-    
+
+    @objc func handlePanFrom(_ recognizer: UIPanGestureRecognizer) {
+        var locationOfBeganTap: CGPoint = CGPoint(x: 0, y: 0)
+        var locationOfEndTap: CGPoint = CGPoint(x: 0, y: 0)
+        let velocity = recognizer.velocity(in: view)
+
+        if recognizer.state == UIGestureRecognizer.State.began {
+            locationOfBeganTap = recognizer.location(in: view)
+            print("Start Location: \(locationOfBeganTap)")
+
+        } else if recognizer.state == UIGestureRecognizer.State.ended {
+            locationOfEndTap = recognizer.location(in: view)
+            if(marioLivesLeft>0){
+                mario?.physicsBody?.applyForce(CGVector(dx: (velocity.x*2 + locationOfEndTap.x)*5, dy: (abs(velocity.y*1.25)  + locationOfEndTap.y)*25))
+            }
+            print("End location: \(locationOfEndTap)")
+            print("Velocity: \(velocity)")
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		if(marioLivesLeft>0){
-        	mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 30000))
-		}
+        if(marioLivesLeft>0){
+//            mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 30000))
+        }
     }
 
 	func initMarioLifes(){
