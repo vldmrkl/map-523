@@ -55,7 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		if(marioLivesLeft>0){
-        	mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 40000))
+        	mario?.physicsBody?.applyForce(CGVector(dx:0, dy: 30000))
 		}
     }
 
