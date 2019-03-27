@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HeartRateTracker_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="center" title="Record" id="Soe-8T-eK0"/>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Stop" id="LfY-uW-9xa">
+                            <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                        </button>
+                    </items>
+                    <menu key="menu" id="ZL0-am-dgO">
+                        <items>
+                            <menuItem title="History" icon="info" id="UkP-8a-Aeb" userLabel="History">
+                                <connections>
+                                    <action selector="showHistory" destination="AgC-eL-Hgc" id="Y4n-2i-xzn"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Clear All" icon="trash" id="li8-a3-wXB">
+                                <connections>
+                                    <action selector="clearHistory" destination="AgC-eL-Hgc" id="0tQ-GA-cTT"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
