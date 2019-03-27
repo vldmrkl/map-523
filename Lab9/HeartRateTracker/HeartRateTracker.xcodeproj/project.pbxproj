@@ -19,6 +19,8 @@
 		2DEE9B5D224BA24A00FD8534 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE9B5C224BA24A00FD8534 /* InterfaceController.swift */; };
 		2DEE9B5F224BA24A00FD8534 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE9B5E224BA24A00FD8534 /* ExtensionDelegate.swift */; };
 		2DEE9B61224BA24A00FD8534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEE9B60224BA24A00FD8534 /* Assets.xcassets */; };
+		2DEE9B73224BB06500FD8534 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE9B72224BB06500FD8534 /* HistoryViewController.swift */; };
+		2DF5C8ED224BFFE600AD1D42 /* SessionRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5C8EC224BFFE600AD1D42 /* SessionRowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		2DEE9B5E224BA24A00FD8534 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		2DEE9B60224BA24A00FD8534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DEE9B62224BA24A00FD8534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DEE9B72224BB06500FD8534 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		2DF5C8EC224BFFE600AD1D42 /* SessionRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				2DEE9B5C224BA24A00FD8534 /* InterfaceController.swift */,
+				2DEE9B72224BB06500FD8534 /* HistoryViewController.swift */,
+				2DF5C8EC224BFFE600AD1D42 /* SessionRowController.swift */,
 				2DEE9B5E224BA24A00FD8534 /* ExtensionDelegate.swift */,
 				2DEE9B60224BA24A00FD8534 /* Assets.xcassets */,
 				2DEE9B62224BA24A00FD8534 /* Info.plist */,
@@ -295,6 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEE9B73224BB06500FD8534 /* HistoryViewController.swift in Sources */,
+				2DF5C8ED224BFFE600AD1D42 /* SessionRowController.swift in Sources */,
 				2DEE9B5F224BA24A00FD8534 /* ExtensionDelegate.swift in Sources */,
 				2DEE9B5D224BA24A00FD8534 /* InterfaceController.swift in Sources */,
 			);

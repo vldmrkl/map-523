@@ -12,11 +12,18 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HeartRateTracker_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HeartRateTracker_WatchKit_Extension">
                     <items>
-                        <button width="1" alignment="center" title="Record" id="Soe-8T-eK0"/>
+                        <button width="1" alignment="center" title="Record" id="Soe-8T-eK0">
+                            <connections>
+                                <action selector="startSession" destination="AgC-eL-Hgc" id="jGO-es-lBM"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" verticalAlignment="center" title="Stop" id="LfY-uW-9xa">
                             <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="stopSession" destination="AgC-eL-Hgc" id="aLk-we-3sa"/>
+                            </connections>
                         </button>
                     </items>
                     <menu key="menu" id="ZL0-am-dgO">
@@ -33,8 +40,47 @@
                             </menuItem>
                         </items>
                     </menu>
+                    <connections>
+                        <outlet property="recordButton" destination="Soe-8T-eK0" id="4hX-e3-Upz"/>
+                        <outlet property="stopButton" destination="LfY-uW-9xa" id="6JX-ni-B6n"/>
+                    </connections>
                 </controller>
             </objects>
+        </scene>
+        <!--HistoryViewController-->
+        <scene sceneID="Kii-JU-N7H">
+            <objects>
+                <controller identifier="HistoryViewController" id="B1G-9c-Cfn" customClass="HistoryViewController" customModule="HeartRateTracker_WatchKit_Extension">
+                    <items>
+                        <table alignment="center" id="5yo-9K-Nl4">
+                            <items>
+                                <tableRow identifier="SessionRowController" id="SAx-af-3xk" customClass="SessionRowController" customModule="HeartRateTracker_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="yKX-F1-zYq">
+                                        <items>
+                                            <label width="18" height="21" alignment="left" verticalAlignment="center" text="id" id="XQF-Eb-XcH">
+                                                <color key="textColor" red="0.96836429830000004" green="0.85228252410000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <label width="30" height="21" alignment="left" verticalAlignment="center" text="Min" id="DFi-94-dLj"/>
+                                            <label width="33" height="21" alignment="left" verticalAlignment="center" text="Max" id="TUd-Mk-Iy6"/>
+                                            <label alignment="left" verticalAlignment="center" text="Avg" id="Udu-e0-cdS"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="avgLabel" destination="Udu-e0-cdS" id="bel-aE-YkY"/>
+                                        <outlet property="idLabel" destination="XQF-Eb-XcH" id="7Bf-eK-wNr"/>
+                                        <outlet property="maxLabel" destination="TUd-Mk-Iy6" id="YQe-o3-JLZ"/>
+                                        <outlet property="minLabel" destination="DFi-94-dLj" id="7wv-TP-aCV"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="sessionsTable" destination="5yo-9K-Nl4" id="mZE-Nr-z0S"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="311" y="292"/>
         </scene>
     </scenes>
 </document>
