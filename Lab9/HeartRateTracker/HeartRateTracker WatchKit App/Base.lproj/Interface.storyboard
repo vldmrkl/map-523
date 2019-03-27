@@ -52,6 +52,9 @@
             <objects>
                 <controller identifier="HistoryViewController" id="B1G-9c-Cfn" customClass="HistoryViewController" customModule="HeartRateTracker_WatchKit_Extension">
                     <items>
+                        <label width="136" alignment="left" text="ID Min Max Avg" textAlignment="center" id="8th-4d-fS3">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
                         <table alignment="center" id="5yo-9K-Nl4">
                             <items>
                                 <tableRow identifier="SessionRowController" id="SAx-af-3xk" customClass="SessionRowController" customModule="HeartRateTracker_WatchKit_Extension">
@@ -80,7 +83,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="311" y="292"/>
+            <point key="canvasLocation" x="275" y="29"/>
         </scene>
     </scenes>
 </document>
