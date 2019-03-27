@@ -15,20 +15,19 @@ class HistoryViewController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         let heartRateHistory = UserDefaults.standard.value(forKey: "heartRateHistory") as! [[Int]]
-//        if heartRateHistory == nil {
-//            UserDefaults.standard.set([[Int]](), forKey: "heartRateHistory")
-//        } else{
-            //print(heartRateHistory)
-//        }
+
         sessionsTable.setNumberOfRows(heartRateHistory.count, withRowType: "SessionRowController")
         for (i, session) in heartRateHistory.enumerated() {
-            print("\(i) : \(session)")
             let sum = session.reduce(0, +)
             let avg = sum / session.count
+            let sessionId = String(i+1)
+            let max = String(session.max()!)
+            let min = String(session.min()!)
             let row = sessionsTable.rowController(at: i) as! SessionRowController
-            row.idLabel.setText(String(i+1))
-            row.minLabel.setText(String(session.min()!))
-            row.maxLabel.setText(String(session.max()!))
+
+            row.idLabel.setText(sessionId)
+            row.minLabel.setText(min)
+            row.maxLabel.setText(max)
             row.avgLabel.setText(String(avg))
 
         }

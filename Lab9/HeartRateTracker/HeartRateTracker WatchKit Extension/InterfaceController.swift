@@ -23,18 +23,20 @@ class InterfaceController: WKInterfaceController {
         if heartRateHistory == nil {
             UserDefaults.standard.set([[Int]](), forKey: "heartRateHistory")
         }
+        stopButton.setEnabled(false)
     }
 
     @IBAction func startSession() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in
             self.updateHeartRate()
         })
+        recordButton.setEnabled(false)
+        stopButton.setEnabled(true)
     }
 
     func updateHeartRate(){
         heartRate = Int.random(in: 80...110)
         heartRateSet.append(heartRate)
-        print("Heart Rate is \(heartRate)")
     }
     
     @IBAction func stopSession() {
@@ -43,13 +45,15 @@ class InterfaceController: WKInterfaceController {
         heartRateHistory.append(heartRateSet)
         UserDefaults.standard.set(heartRateHistory, forKey: "heartRateHistory")
         heartRateSet.removeAll()
+        recordButton.setEnabled(true)
+        stopButton.setEnabled(false)
     }
 
     @IBAction func showHistory() {
         let heartRateHistory = UserDefaults.standard.value(forKey: "heartRateHistory")
-        print("History")
-        print(heartRateHistory ?? [[0]])
-        pushController(withName: "HistoryViewController", context: self)
+        if heartRateHistory != nil{
+            pushController(withName: "HistoryViewController", context: self)
+        }
     }
 
     @IBAction func clearHistory() {
