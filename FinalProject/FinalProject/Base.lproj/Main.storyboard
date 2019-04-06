@@ -82,8 +82,8 @@
                         <constraints>
                             <constraint firstItem="4Dz-DD-Mlg" firstAttribute="centerX" secondItem="lj2-7r-NdV" secondAttribute="centerX" id="7Lv-QU-ybc"/>
                             <constraint firstItem="Wtc-bv-ke5" firstAttribute="centerX" secondItem="lj2-7r-NdV" secondAttribute="centerX" id="O6d-Wy-azP"/>
-                            <constraint firstItem="4Dz-DD-Mlg" firstAttribute="top" secondItem="kGw-qt-413" secondAttribute="top" constant="195" id="Xct-br-pHV"/>
                             <constraint firstItem="kGw-qt-413" firstAttribute="bottom" secondItem="Wtc-bv-ke5" secondAttribute="bottom" constant="153" id="fQT-2g-ahh"/>
+                            <constraint firstItem="Wtc-bv-ke5" firstAttribute="top" secondItem="4Dz-DD-Mlg" secondAttribute="bottom" constant="129.33333333333331" id="uo7-Qz-5lz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kGw-qt-413"/>
                     </view>
@@ -324,6 +324,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kA7-uz-IZN"/>
+        <segue reference="Y9z-5H-uZa"/>
     </inferredMetricsTieBreakers>
 </document>
