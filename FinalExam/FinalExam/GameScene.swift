@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ABCGate: SKSpriteNode?
     var DEFGate: SKSpriteNode?
     var GHIGate: SKSpriteNode?
+    var recentCharacter: SKSpriteNode?
     
     var scoreLabel : SKLabelNode!
     var score: Int = 0
@@ -53,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         livesLabel = childNode(withName: "livesLabel") as? SKLabelNode
         livesLabel.text = "❤️❤️❤️"
 
-        letterTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+        letterTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (timer) in
             self.spawnCharacter()
         })
 
@@ -63,6 +64,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
         let randomCharacter = letters.randomElement()!
         let character = SKSpriteNode(imageNamed: randomCharacter)
+
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeLeft.direction = .left
+        self.view!.addGestureRecognizer(swipeLeft)
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeRight.direction = .right
+        self.view!.addGestureRecognizer(swipeRight)
+
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeDown.direction = .down
+        self.view!.addGestureRecognizer(swipeDown)
 
         character.size = CGSize(width: 75, height: 75)
         character.physicsBody = SKPhysicsBody(rectangleOf: character.size)
@@ -86,15 +99,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         character.position = CGPoint(x: randomCharX, y: size.height / 2 + character.size.height / 2)
 
         let flyDown = SKAction.moveBy(x: 0, y: -size.height - character.size.height, duration: 4)
-        let moveUFO = SKAction.sequence([flyDown, SKAction.removeFromParent()])
+        let moveCharacter = SKAction.sequence([flyDown, SKAction.removeFromParent()])
 
-        character.run(moveUFO)
+        character.run(moveCharacter)
+        recentCharacter = character
+    }
+
+    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) -> Void {
+        let minX = -size.width/2 + recentCharacter!.size.width + 50
+        let maxX = size.width/2 - recentCharacter!.size.width - 50
+
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            let moveRight = SKAction.moveTo(x: maxX, duration: 1)
+            recentCharacter!.run(moveRight)
+        }
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            let moveLeft = SKAction.moveTo(x: minX, duration: 1)
+            recentCharacter!.run(moveLeft)
+        }
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
+            let moveDown = SKAction.moveTo(x: 0, duration: 1)
+            recentCharacter!.run(moveDown)
+        }
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
+        var livesLeft = ""
+
         if contact.bodyB.categoryBitMask == characterCategory {
             let character = contact.bodyB.node?.name?.prefix(1)
-            print(character)
             if ["A", "B", "C"].contains(character){
                 if contact.bodyA.categoryBitMask == abcCategory {
                     score += 1
@@ -117,7 +150,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         } else if contact.bodyA.categoryBitMask == characterCategory {
             let character = contact.bodyA.node?.name?.prefix(1)
-            print(character)
             if ["A", "B", "C"].contains(character){
                 if contact.bodyB.categoryBitMask == abcCategory {
                     score += 1
@@ -141,6 +173,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         }
 
+        if(lives > 0){
+            for _ in 1...lives {
+                livesLeft += "❤️"
+            }
+        }
         scoreLabel?.text = "Score: \(score)"
+        livesLabel.text = livesLeft
+
     }
 }
