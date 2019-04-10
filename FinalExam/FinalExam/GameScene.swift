@@ -15,12 +15,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var DEFGate: SKSpriteNode?
     var GHIGate: SKSpriteNode?
     var recentCharacter: SKSpriteNode?
-    
     var scoreLabel : SKLabelNode!
     var score: Int = 0
 
     var livesLabel : SKLabelNode!
     var lives: Int = 3
+
+    var finalScoreLabel: SKLabelNode!
+    var gameOverLabel: SKLabelNode!
+    var gameOver: Bool = false
 
     var letterTimer: Timer?
 
@@ -49,10 +52,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GHIGate?.physicsBody?.contactTestBitMask = characterCategory
 
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        scoreLabel.zPosition = 5
         scoreLabel.text = "Score: \(score)"
 
         livesLabel = childNode(withName: "livesLabel") as? SKLabelNode
+        livesLabel.zPosition = 5
         livesLabel.text = "❤️❤️❤️"
+
+        gameOverLabel = childNode(withName: "gameOverLabel") as? SKLabelNode
+        gameOverLabel.zPosition = 5
+        gameOverLabel.isHidden = true
+
+
+        finalScoreLabel = childNode(withName: "finalScoreLabel") as? SKLabelNode
+        finalScoreLabel.zPosition = 5
+        finalScoreLabel.isHidden = true
 
         letterTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (timer) in
             self.spawnCharacter()
@@ -125,58 +139,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         var livesLeft = ""
-
-        if contact.bodyB.categoryBitMask == characterCategory {
-            let character = contact.bodyB.node?.name?.prefix(1)
-            if ["A", "B", "C"].contains(character){
-                if contact.bodyA.categoryBitMask == abcCategory {
-                    score += 1
-                } else{
-                    print("Wrong gate")
+        if !gameOver{
+            if contact.bodyB.categoryBitMask == characterCategory {
+                let character = contact.bodyB.node?.name?.prefix(1)
+                if ["A", "B", "C"].contains(character){
+                    if contact.bodyA.categoryBitMask == abcCategory {
+                        score += 1
+                    } else{
+                        lives -= 1
+                    }
+                } else if ["D", "E", "F"].contains(character) {
+                    if contact.bodyA.categoryBitMask == defCategory {
+                        score += 1
+                    }
+                    else{
+                        lives -= 1
+                    }
+                } else if ["G", "H", "I"].contains(character) {
+                    if contact.bodyA.categoryBitMask == ghiCategory {
+                        score += 1
+                    } else{
+                        lives -= 1
+                    }
                 }
-            } else if ["D", "E", "F"].contains(character) {
-                if contact.bodyA.categoryBitMask == defCategory {
-                    score += 1
-                }
-                else{
-                    print("Wrong gate")
-                }
-            } else if ["G", "H", "I"].contains(character) {
-                if contact.bodyA.categoryBitMask == ghiCategory {
-                    score += 1
-                } else{
-                    print("Wrong gate")
+            } else if contact.bodyA.categoryBitMask == characterCategory {
+                let character = contact.bodyA.node?.name?.prefix(1)
+                if ["A", "B", "C"].contains(character){
+                    if contact.bodyB.categoryBitMask == abcCategory {
+                        score += 1
+                    } else{
+                        lives -= 1
+                    }
+                } else if ["D", "E", "F"].contains(character) {
+                    if contact.bodyB.categoryBitMask == defCategory {
+                        score += 1
+                    } else{
+                        lives -= 1
+                    }
+                } else if ["G", "H", "I"].contains(character) {
+                    if contact.bodyB.categoryBitMask == ghiCategory {
+                        score += 1
+                    } else{
+                        lives -= 1
+                    }
                 }
             }
-        } else if contact.bodyA.categoryBitMask == characterCategory {
-            let character = contact.bodyA.node?.name?.prefix(1)
-            if ["A", "B", "C"].contains(character){
-                if contact.bodyB.categoryBitMask == abcCategory {
-                    score += 1
-                } else{
-                    print("Wrong gate")
-                }
-            } else if ["D", "E", "F"].contains(character) {
-                if contact.bodyB.categoryBitMask == defCategory {
-                    score += 1
-                }
-                else{
-                    print("Wrong gate")
-                }
-            } else if ["G", "H", "I"].contains(character) {
-                if contact.bodyB.categoryBitMask == ghiCategory {
-                    score += 1
-                } else{
-                    print("Wrong gate")
-                }
-            }
-
         }
 
         if(lives > 0){
             for _ in 1...lives {
                 livesLeft += "❤️"
             }
+        } else {
+            scoreLabel.isHidden = true
+            livesLabel.isHidden = true
+
+            gameOverLabel.isHidden = false
+            finalScoreLabel.text = "Final Score: \(score)"
+            finalScoreLabel.isHidden = false
+            letterTimer?.invalidate()
         }
         scoreLabel?.text = "Score: \(score)"
         livesLabel.text = livesLeft
