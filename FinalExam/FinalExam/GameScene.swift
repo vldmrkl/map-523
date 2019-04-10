@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var ABCGate: SKSpriteNode?
     var DEFGate: SKSpriteNode?
@@ -17,6 +17,9 @@ class GameScene: SKScene {
     
     var scoreLabel : SKLabelNode!
     var score: Int = 0
+
+    var livesLabel : SKLabelNode!
+    var lives: Int = 3
 
     var letterTimer: Timer?
 
@@ -26,6 +29,9 @@ class GameScene: SKScene {
     let ghiCategory: UInt32 = 0x1 << 3
     
     override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
+
+
         ABCGate = childNode(withName: "ABCGate") as? SKSpriteNode
         ABCGate?.physicsBody?.categoryBitMask = abcCategory
         ABCGate?.physicsBody?.collisionBitMask = abcCategory
@@ -43,6 +49,9 @@ class GameScene: SKScene {
 
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
         scoreLabel.text = "Score: \(score)"
+
+        livesLabel = childNode(withName: "livesLabel") as? SKLabelNode
+        livesLabel.text = "❤️❤️❤️"
 
         letterTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.spawnCharacter()
@@ -62,10 +71,10 @@ class GameScene: SKScene {
         character.physicsBody?.isDynamic = true
 
         character.physicsBody?.categoryBitMask = characterCategory
-//        character.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
-//        character.physicsBody?.collisionBitMask = 0
+        character.physicsBody?.contactTestBitMask = abcCategory | defCategory | ghiCategory
+        character.physicsBody?.collisionBitMask = characterCategory
 
-        character.name = "character\(randomCharacter.uppercased())Node"
+        character.name = "\(randomCharacter.uppercased())characterNode"
 
         self.addChild(character)
 
@@ -80,5 +89,58 @@ class GameScene: SKScene {
         let moveUFO = SKAction.sequence([flyDown, SKAction.removeFromParent()])
 
         character.run(moveUFO)
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyB.categoryBitMask == characterCategory {
+            let character = contact.bodyB.node?.name?.prefix(1)
+            print(character)
+            if ["A", "B", "C"].contains(character){
+                if contact.bodyA.categoryBitMask == abcCategory {
+                    score += 1
+                } else{
+                    print("Wrong gate")
+                }
+            } else if ["D", "E", "F"].contains(character) {
+                if contact.bodyA.categoryBitMask == defCategory {
+                    score += 1
+                }
+                else{
+                    print("Wrong gate")
+                }
+            } else if ["G", "H", "I"].contains(character) {
+                if contact.bodyA.categoryBitMask == ghiCategory {
+                    score += 1
+                } else{
+                    print("Wrong gate")
+                }
+            }
+        } else if contact.bodyA.categoryBitMask == characterCategory {
+            let character = contact.bodyA.node?.name?.prefix(1)
+            print(character)
+            if ["A", "B", "C"].contains(character){
+                if contact.bodyB.categoryBitMask == abcCategory {
+                    score += 1
+                } else{
+                    print("Wrong gate")
+                }
+            } else if ["D", "E", "F"].contains(character) {
+                if contact.bodyB.categoryBitMask == defCategory {
+                    score += 1
+                }
+                else{
+                    print("Wrong gate")
+                }
+            } else if ["G", "H", "I"].contains(character) {
+                if contact.bodyB.categoryBitMask == ghiCategory {
+                    score += 1
+                } else{
+                    print("Wrong gate")
+                }
+            }
+
+        }
+
+        scoreLabel?.text = "Score: \(score)"
     }
 }
