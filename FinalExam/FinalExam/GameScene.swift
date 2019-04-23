@@ -26,6 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameOver: Bool = false
 
     var letterTimer: Timer?
+    var letterTimer2: Timer?
+    var letterTimer3: Timer?
 
     let characterCategory: UInt32 = 0x1 << 0
     let abcCategory: UInt32 = 0x1 << 1
@@ -184,6 +186,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
+
+            if score == 10 {
+                letterTimer2 = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { (timer) in
+                    self.spawnCharacter()
+                })
+                
+            } else if score == 20 {
+                letterTimer3 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                    self.spawnCharacter()
+                })
+            }
         }
 
         if(lives > 0){
@@ -197,7 +210,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOverLabel.isHidden = false
             finalScoreLabel.text = "Final Score: \(score)"
             finalScoreLabel.isHidden = false
+
             letterTimer?.invalidate()
+            letterTimer2?.invalidate()
+            letterTimer3?.invalidate()
         }
         scoreLabel?.text = "Score: \(score)"
         livesLabel.text = livesLeft

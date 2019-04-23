@@ -14,7 +14,6 @@
 		2DCBB2FA225E1375009EA4E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB2F8225E1375009EA4E3 /* Main.storyboard */; };
 		2DCBB2FC225E1377009EA4E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB2FB225E1377009EA4E3 /* Assets.xcassets */; };
 		2DCBB2FF225E1377009EA4E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB2FD225E1377009EA4E3 /* LaunchScreen.storyboard */; };
-		2DCBB307225E15AE009EA4E3 /* Background.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB306225E15AE009EA4E3 /* Background.sks */; };
 		2DCBB309225E1880009EA4E3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB308225E1880009EA4E3 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		2DCBB2FB225E1377009EA4E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DCBB2FE225E1377009EA4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DCBB300225E1377009EA4E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DCBB306225E15AE009EA4E3 /* Background.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Background.sks; sourceTree = "<group>"; };
 		2DCBB308225E1880009EA4E3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +64,6 @@
 				2DCBB2F2225E1375009EA4E3 /* Actions.sks */,
 				2DCBB308225E1880009EA4E3 /* GameScene.sks */,
 				2DCBB2F4225E1375009EA4E3 /* GameScene.swift */,
-				2DCBB306225E15AE009EA4E3 /* Background.sks */,
 				2DCBB2F6225E1375009EA4E3 /* GameViewController.swift */,
 				2DCBB2F8225E1375009EA4E3 /* Main.storyboard */,
 				2DCBB2FB225E1377009EA4E3 /* Assets.xcassets */,
@@ -136,7 +133,6 @@
 			files = (
 				2DCBB2FA225E1375009EA4E3 /* Main.storyboard in Resources */,
 				2DCBB2FC225E1377009EA4E3 /* Assets.xcassets in Resources */,
-				2DCBB307225E15AE009EA4E3 /* Background.sks in Resources */,
 				2DCBB2FF225E1377009EA4E3 /* LaunchScreen.storyboard in Resources */,
 				2DCBB309225E1880009EA4E3 /* GameScene.sks in Resources */,
 				2DCBB2F3225E1375009EA4E3 /* Actions.sks in Resources */,
